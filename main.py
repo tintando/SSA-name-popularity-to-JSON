@@ -8,6 +8,7 @@ def nameDistribution(startYear, endYear, top, mode):
     :param startYear: First year taken in consideration
     :param endYear: Final year taken into consideration
     :param top: How many top names to consider per year
+    :param mode: "p" gets percentages, "n" gets number of births
     :return: Dictionary in the form {'year': {'male'/'female': {'name': float(xx.yyyy)}}}
     """
     root = {}
