@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import json
 
-def nameDistribution(startYear, endYear, top):
+def nameDistribution(startYear, endYear, top, mode):
     """
         Returns a dictionary containing the distribution of names per year per gender and creates the corresponding json file
     :param startYear: First year taken in consideration
@@ -13,7 +13,7 @@ def nameDistribution(startYear, endYear, top):
     root = {}
     for year in range(startYear, endYear+1):
         url = "https://www.ssa.gov:443/cgi-bin/popularnames.cgi"
-        data = {"year": year, "top": top, "number": "p"}
+        data = {"year": year, "top": top, "number": mode}
         res = requests.post(url, data=data)
         soup = BeautifulSoup(res.text, features="lxml")
 
@@ -34,5 +34,5 @@ def nameDistribution(startYear, endYear, top):
 
 
 if __name__ == '__main__':
-    nameDistribution(1880, 2021, 250)
+    nameDistribution(1880, 2021, 250, "p")
 
